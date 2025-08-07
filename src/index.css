@@ -1,0 +1,19 @@
+:root {
+  --text: #09090d;
+  --background: #f6f6f9;
+  --primary: #6f729c;
+  --secondary: #cbb3bb;
+  --accent: #b49a92;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text);
+  background: var(--background);
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
