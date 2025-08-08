@@ -1,5 +1,7 @@
+import { LogOut } from 'lucide-react';
+
 import ListComponent from '../generic-list';
-import { LogoContainer, Sidebar } from './style';
+import { LogoContainer, Logout, Sidebar } from './style';
 
 const SidebarComponent = () => {
   const item = [
@@ -8,6 +10,11 @@ const SidebarComponent = () => {
     { id: 3, label: 'Vendas', link: '#' },
     { id: 4, label: 'Cadastro Fornecedor', link: '#' },
   ];
+  // const history = useHistory();
+
+  // const handleLogout = () => {
+  //   history.push('/login');
+  // };
 
   return (
     <Sidebar>
@@ -15,6 +22,10 @@ const SidebarComponent = () => {
         <h1>Bela Compra</h1>
       </LogoContainer>
       <ListComponent items={item} />
+      <Logout>
+        <span>Sair</span>
+        <LogOut size={16} />
+      </Logout>
     </Sidebar>
   );
 };

@@ -1,9 +1,12 @@
+@import "tailwindcss";
+
 :root {
   --text: #09090d;
   --background: #f6f6f9;
   --primary: #6f729c;
   --secondary: #cbb3bb;
   --accent: #b49a92;
+  --metric-card-bg: #6f729c6e
 }
 
 * {
