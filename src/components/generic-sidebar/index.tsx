@@ -8,7 +8,7 @@ const SidebarComponent = () => {
   const item = [
     { id: 1, label: 'Início', link: '/home-page' },
     { id: 2, label: 'Cadastro Produto', link: '#' },
-    { id: 3, label: 'Vendas', link: '#' },
+    { id: 3, label: 'Vendas', link: '/sales' },
     { id: 4, label: 'Produtos', link: '/products' },
   ];
   const navigate = useNavigate();

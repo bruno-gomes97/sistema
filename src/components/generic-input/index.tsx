@@ -8,6 +8,8 @@ interface InputProps {
   label?: string;
   hasBorder?: boolean;
   size?: number;
+  padding?: number;
+  noMargin?: boolean;
 }
 
 const InputComponent = ({ type, id, placeholder, required, label, ...props }: InputProps) => {
