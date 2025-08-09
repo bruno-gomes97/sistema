@@ -9,7 +9,7 @@ const HomePage = () => {
     <div className="flex">
       <SidebarComponent />
       <Container>
-        <HeaderComponent hasButton={false} text="Olá, bem-vindo!" />
+        <HeaderComponent hasButton={false} text="Olá, bem-vindo(a)!" />
         <Dashboard />
         <QuickActionsPanel />
       </Container>

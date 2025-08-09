@@ -1,20 +1,21 @@
 import { LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 import ListComponent from '../generic-list';
 import { LogoContainer, Logout, Sidebar } from './style';
 
 const SidebarComponent = () => {
   const item = [
-    { id: 1, label: 'Cadastro Cliente', link: '#' },
+    { id: 1, label: 'Início', link: '/home-page' },
     { id: 2, label: 'Cadastro Produto', link: '#' },
     { id: 3, label: 'Vendas', link: '#' },
-    { id: 4, label: 'Cadastro Fornecedor', link: '#' },
+    { id: 4, label: 'Produtos', link: '/products' },
   ];
-  // const history = useHistory();
+  const navigate = useNavigate();
 
-  // const handleLogout = () => {
-  //   history.push('/login');
-  // };
+  const handleLogout = () => {
+    navigate('/');
+  };
 
   return (
     <Sidebar>
@@ -22,7 +23,7 @@ const SidebarComponent = () => {
         <h1>Bela Compra</h1>
       </LogoContainer>
       <ListComponent items={item} />
-      <Logout>
+      <Logout onClick={handleLogout}>
         <span>Sair</span>
         <LogOut size={16} />
       </Logout>

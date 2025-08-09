@@ -16,6 +16,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
+  font-size: 32px;
+  font-weight: 700;
   text-align: center;
   margin: 1rem 0;
 `;
