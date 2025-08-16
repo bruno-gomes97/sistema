@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# Sistema de Loja de Roupas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é um **sistema de loja de roupas**, desenvolvido para facilitar o gerenciamento de uma loja real. A ideia surgiu porque a loja da minha irmã precisava anotar tudo no caderno e depois procurar as informações, o que é muito trabalhoso.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## Expanding the ESLint configuration
+- **Frontend:** React + TypeScript
+- **Bibliotecas e Conceitos:**
+  - React Hook Form
+  - Axios para requisições HTTP
+  - Componentização e criação de componentes genéricos
+  - Custom Hooks para reutilização de lógica
+- **Backend:** Inicialmente utilizando `json-server` para testes
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Funcionalidades
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+- Registro de clientes
+- Cadastro de produtos
+- Listagem de produtos com tabela genérica
+- Requisições HTTP para buscar e salvar dados
+- Componentes reutilizáveis e hooks customizados
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Home Page**
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+![Home Page](./documents/home-page.png)
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+**Registro de Cliente**
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+![Register Client](./documents/register-client.png)
+
+---
+
+## Observações
+
+Este sistema foi criado como um projeto de aprendizado e aplicação de conceitos de **React com TypeScript**, visando **componentização, reuso de código e boas práticas** no desenvolvimento frontend.
+
+Em testes, o `json-server` está sendo utilizado como backend, mas futuramente será substituído por uma API real com Spring Boot e PostgreSQL.
+
+---
