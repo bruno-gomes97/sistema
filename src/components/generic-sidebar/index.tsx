@@ -7,7 +7,7 @@ import { LogoContainer, Logout, Sidebar } from './style';
 const SidebarComponent = () => {
   const item = [
     { id: 1, label: 'Início', link: '/home-page' },
-    { id: 2, label: 'Cadastro Produto', link: '#' },
+    { id: 2, label: 'Cadastrar Cliente', link: '/register-client' },
     { id: 3, label: 'Vendas', link: '/sales' },
     { id: 4, label: 'Produtos', link: '/products' },
   ];

@@ -51,4 +51,5 @@ export const BoxName = styled.div`
   background: #fff;
   padding: 8px;
   flex: 1;
+  height: 39px;
 `;

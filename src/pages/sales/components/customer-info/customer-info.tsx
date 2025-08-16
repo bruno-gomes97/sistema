@@ -1,18 +1,33 @@
 import InputComponent from '../../../../components/generic-input';
 import { BoxName, Container, Form, Label, Title } from './style';
 
-const CustomerInfo = () => {
+interface CustomerInfoProps {
+  cpf?: string;
+  setCpf: (value: string) => void;
+  onHandleSubmit?: (event: React.FormEvent) => void;
+  fullname?: string;
+}
+
+const CustomerInfo = ({ cpf, setCpf, onHandleSubmit, fullname }: CustomerInfoProps) => {
   return (
     <Container className="customer-info">
       <Title>Dados do Cliente</Title>
       <Form>
-        <Label htmlFor="cpf">CPF</Label>
-        <InputComponent id="input-cpf" padding={8} hasBorder noMargin placeholder="Digite o CPF aqui" />
-        <button>Pesquisar</button>
+        <Label>CPF</Label>
+        <InputComponent
+          id="input-cpf"
+          value={cpf}
+          onChange={e => setCpf(e.target.value)}
+          padding={8}
+          hasBorder
+          noMargin
+          placeholder="Digite o CPF aqui"
+        />
+        <button onClick={onHandleSubmit}>Pesquisar</button>
       </Form>
       <div id="display-name">
         <Label>Nome:</Label>
-        <BoxName>Bruno Gomes de Souza</BoxName>
+        <BoxName>{fullname}</BoxName>
       </div>
     </Container>
   );

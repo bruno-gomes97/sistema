@@ -1,6 +1,6 @@
 import { Container, Input, Label } from './style';
 
-interface InputProps {
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   type?: string;
   id?: string;
   placeholder?: string;

@@ -1,8 +1,13 @@
+import { ToastContainer } from 'react-toastify';
+
+import Login from './pages/login/login.page';
+
 function App() {
   return (
-    <div className="flex">
-      <h1>Olá</h1>
-    </div>
+    <>
+      <Login />
+      <ToastContainer position="top-right" autoClose={1000} />
+    </>
   );
 }
 
