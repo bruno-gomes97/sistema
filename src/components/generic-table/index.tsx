@@ -44,7 +44,7 @@ const GenericTable = ({ products }: ProductTableProps) => {
           {products.map((row: TProduct) => (
             <TableRow key={row.code}>
               <TableCell align="center">{row.code}</TableCell>
-              <TableCell align="center">{row.name}</TableCell>
+              <TableCell align="center">{row.description}</TableCell>
               <TableCell align="center">{row.color}</TableCell>
               <TableCell align="center">{row.size}</TableCell>
               <TableCell align="center">{row.category}</TableCell>

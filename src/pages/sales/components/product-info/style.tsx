@@ -61,6 +61,7 @@ export const Wrapper = styled.div`
 
 export const BoxName = styled.div`
   width: auto;
+  min-height: 42px;
   border: 1px solid var(--accent);
   border-radius: 10px;
   background: #fff;
@@ -77,6 +78,7 @@ export const Box = styled.form`
 
 export const NumberBox = styled.div`
   width: 100px;
+  min-height: 42px;
   text-align: center;
   border: 1px solid var(--accent);
   border-radius: 10px;
