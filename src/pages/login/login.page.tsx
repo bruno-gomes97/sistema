@@ -1,74 +1,32 @@
-import { useState } from 'react';
-
 import { useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
-import InputComponent from '../../components/generic-input';
-import { Container, Form, Title } from './style';
+import Button from '../../components/buttons';
+import FormComponent from '../../components/form/authForm';
+import InputComponent from '../../components/input';
+import { Container, Wrapper } from './style';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const LoginPage = () => {
   const navigate = useNavigate();
 
-  const handleSubmit = async event => {
-    event.preventDefault();
-
-    if (!email || !password) return;
-    try {
-      const resp = await fetch(
-        `http://localhost:3001/users?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`,
-        {
-          method: 'GET',
-        }
-      );
-
-      const data = await resp.json();
-
-      if (data.length > 0) {
-        toast.success('Login realizado com sucesso!');
-        setEmail('');
-        setPassword('');
-        navigate('home-page');
-      } else {
-        toast.error('E-mail ou senha inválidos!');
-        setEmail('');
-        setPassword('');
-      }
-    } catch {
-      toast.error('Erro no servidor. Tente novamente mais tarde.');
-    }
+  const handleSubmit = () => {
+    navigate('/dashboard');
   };
-
   return (
     <Container>
-      <Title>Login</Title>
-      <Form id="login-form" onSubmit={handleSubmit}>
-        <InputComponent
-          hasBorder
-          type="email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          placeholder="Digite seu email"
-          required
-          id="email"
-          label="Email"
-        />
-        <InputComponent
-          hasBorder
-          type="password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          placeholder="Digite sua senha"
-          required
-          id="password"
-          label="Senha"
-        />
-        <button type="submit">Entrar</button>
-      </Form>
+      <FormComponent onSubmit={handleSubmit} title="Boutique Feminina" subtitle="Faça login para acessar o sistema">
+        <InputComponent id="email" placeholder="seu@email.com" label="Email" type="email" />
+        <InputComponent id="password" label="Password" type="password" />
+        <Wrapper>
+          <Button type="submit" id="btn-submit">
+            Entrar
+          </Button>
+          <span>
+            Não tem uma conta? <a href="/signup">Cadastre-se</a>
+          </span>
+        </Wrapper>
+      </FormComponent>
     </Container>
   );
 };
 
-export default Login;
+export default LoginPage;
