@@ -12,11 +12,12 @@ type SelectProps = {
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   options?: Option[];
   placeholder?: string;
+  className?: string;
 };
 
-const SelectComponent = ({ id, label, value, onChange, options, placeholder }: SelectProps) => {
+const SelectComponent = ({ id, label, value, onChange, options, placeholder, className }: SelectProps) => {
   return (
-    <Container>
+    <Container className={className}>
       <Label>{label}</Label>
       <Select id={id} value={value} onChange={onChange}>
         {placeholder && (

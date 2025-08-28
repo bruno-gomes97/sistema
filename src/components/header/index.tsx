@@ -6,16 +6,17 @@ import { Header, Title, Wrapper } from './style';
 
 interface HeaderProps {
   variant?: 'dashboard' | 'default';
+  title?: string;
 }
 
-const HeaderComponent = ({ variant = 'dashboard' }: HeaderProps) => {
+const HeaderComponent = ({ variant = 'dashboard', title }: HeaderProps) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     navigate('/');
   };
   return (
     <Header>
-      <Title>Boutique Feminina</Title>
+      <Title>{title}</Title>
       {variant === 'dashboard' && (
         <>
           <Wrapper>
@@ -31,9 +32,9 @@ const HeaderComponent = ({ variant = 'dashboard' }: HeaderProps) => {
       {variant === 'default' && (
         <>
           <Wrapper>
-            <Button onClick={() => navigate(-1)} id="btn-back">
+            <Button onClick={() => navigate('/dashboard')} id="btn-back">
               <MoveLeft size={'20'} />
-              Voltar ao Dashboar
+              Voltar ao Dashboard
             </Button>
           </Wrapper>
         </>

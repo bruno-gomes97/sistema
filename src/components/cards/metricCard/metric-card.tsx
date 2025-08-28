@@ -1,7 +1,7 @@
 import CardBase from '..';
 import { Content, Description, Header, Value } from './style';
 
-interface MetricCardProps {
+export interface MetricCardProps {
   title?: string;
   icon?: React.ReactNode;
   value?: string | number;

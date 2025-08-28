@@ -1,5 +1,8 @@
-import { useState } from 'react';
+import { Box, Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
+import Button from '../../components/buttons';
+import EmptyState from '../../components/emptyState';
 import FilterBox from '../../components/filterBox';
 import HeaderComponent from '../../components/header';
 import InputComponent from '../../components/input';
@@ -7,16 +10,16 @@ import SelectComponent from '../../components/select';
 import { Container, Title } from './style';
 
 const ProductPage = () => {
-  const [fruit, setFruit] = useState('');
+  const navigate = useNavigate();
 
   const fruitOptions = [
-    { value: 'apple', label: 'Maçã' },
-    { value: 'banana', label: 'Banana' },
-    { value: 'orange', label: 'Laranja' },
+    { value: 'roupas', label: 'Roupas' },
+    { value: 'acessorios', label: 'Acessórios' },
+    { value: 'calçados', label: 'Calçados' },
   ];
   return (
     <>
-      <HeaderComponent variant="default" />
+      <HeaderComponent title="Gerenciar Produtos" variant="default" />
       <Container>
         <FilterBox
           hasHeader
@@ -37,12 +40,26 @@ const ProductPage = () => {
           <SelectComponent
             id="select-category"
             label="Categoria"
-            value={fruit}
-            onChange={e => setFruit(e.target.value)}
-            options={fruitOptions}
+            options={[
+              { value: 'roupas', label: 'Roupas' },
+              { value: 'acessorios', label: 'Acessórios' },
+              { value: 'calçados', label: 'Calçados' },
+            ]}
             placeholder="Selecione as categorias"
           />
         </FilterBox>
+        {fruitOptions.length > 0 && (
+          <EmptyState
+            message="Nenhum produto cadastrado"
+            description="Comece adicionando seu primeiro produto ao catálogo."
+            icon={<Box size={52} />}
+            children={
+              <Button onClick={() => navigate('/register-product')} id="add-first-product">
+                <Plus /> Adicionar Primeiro Produto
+              </Button>
+            }
+          />
+        )}
       </Container>
     </>
   );

@@ -49,6 +49,9 @@ const Dashboard = () => {
       title: 'Cliente',
       description: 'Cadastre e gerencie seus clientes',
       icon: <User2 size={18} />,
+      handleClick: () => {
+        navigate('/client-management');
+      },
       text: 'Gerenciar Clientes',
     },
     {
@@ -67,7 +70,7 @@ const Dashboard = () => {
 
   return (
     <>
-      <HeaderComponent variant="dashboard" />
+      <HeaderComponent title="Boutique Feminina" variant="dashboard" />
       <Container>
         <Title>Dashboard</Title>
         <p>Gerencie sua loja de roupas femininas</p>

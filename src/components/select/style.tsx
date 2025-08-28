@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Label = styled.label`
-  color: var(--primary);
+  color: var(--secondary);
   font-size: 1rem;
   font-weight: 600;
 `;

@@ -7,17 +7,19 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
 `;
 
+export const Textarea = styled.textarea`
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  resize: vertical;
+  outline: none;
+  color: var(--black-color);
+`;
+
 export const Label = styled.label`
   color: var(--secondary);
   font-size: 1rem;
   font-weight: 600;
-`;
-
-export const Input = styled.input`
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--black-color);
-  font-size: 14px;
-  padding: 8px;
-  outline: none;
 `;
