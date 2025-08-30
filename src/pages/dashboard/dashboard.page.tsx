@@ -1,18 +1,22 @@
+import { useEffect, useState } from 'react';
+
 import { Box, ShoppingCart, TrendingUp, User2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import ActionCard from '../../components/cards/actionCard/action-card';
 import MetricCard from '../../components/cards/metricCard/metric-card';
 import HeaderComponent from '../../components/header';
+import { getQuantityProducts } from '../../service/http/products/request';
 import { Container, Title, WrapperAction, WrapperMetric } from './style';
 
 const Dashboard = () => {
+  const [quantityProducts, setQuantityProducts] = useState<number>(0);
   const navigate = useNavigate();
   const metricsCardData = [
     {
       title: 'Produtos',
       icon: <Box size={18} />,
-      value: 0,
+      value: quantityProducts,
       description: 'Produtos Cadastrados',
     },
     {
@@ -67,6 +71,10 @@ const Dashboard = () => {
       text: 'Ver Relatórios',
     },
   ];
+
+  useEffect(() => {
+    getQuantityProducts().then(setQuantityProducts);
+  }, []);
 
   return (
     <>

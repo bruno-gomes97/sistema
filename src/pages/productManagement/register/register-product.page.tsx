@@ -1,6 +1,5 @@
 import { Save, X } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../../../components/buttons';
@@ -9,24 +8,21 @@ import InputComponent from '../../../components/input';
 import SelectComponent from '../../../components/select';
 import SwitchComponent from '../../../components/switch';
 import TextareaComponent from '../../../components/textarea';
+import { PRODUCT_CATEGORY_LABEL, PRODUCT_SIZE_LABEL } from '../../../constants/product';
+import { useCreate } from '../../../hook/use-create';
 import { createProduct, type ProductType } from '../../../service/http/products/request';
 import ContainerInput from './components/container-input';
 import { Container, Title } from './style';
 
 const RegisterProduct = () => {
-  const navigate = useNavigate();
+  const { onSubmit: CreateProductHandler } = useCreate<ProductType>(createProduct, {
+    redirectTo: '/product-management',
+  });
   const { register, handleSubmit } = useForm<ProductType>();
+  const navigate = useNavigate();
 
   const handleAddProduct = async (data: ProductType) => {
-    try {
-      await createProduct({
-        ...data,
-      });
-      toast.success('Produto criado com sucesso!');
-      navigate(-1);
-    } catch (error) {
-      toast.error('Erro ao criar produto', error as any);
-    }
+    CreateProductHandler(data);
   };
 
   return (
@@ -57,9 +53,10 @@ const RegisterProduct = () => {
                 required: true,
               })}
               options={[
-                { value: 'roupas', label: 'Roupas' },
-                { value: 'acessorios', label: 'Acessórios' },
-                { value: 'calçados', label: 'Calçados' },
+                ...Object.entries(PRODUCT_CATEGORY_LABEL).map(([value, label]) => ({
+                  value: value.toUpperCase(),
+                  label,
+                })),
               ]}
             />
           </div>
@@ -111,9 +108,10 @@ const RegisterProduct = () => {
               label="Tamanho"
               register={register('size')}
               options={[
-                { value: 'p', label: 'P' },
-                { value: 'm', label: 'M' },
-                { value: 'g', label: 'G' },
+                ...Object.entries(PRODUCT_SIZE_LABEL).map(([value, label]) => ({
+                  value: value.toUpperCase(),
+                  label,
+                })),
               ]}
             />
             <InputComponent

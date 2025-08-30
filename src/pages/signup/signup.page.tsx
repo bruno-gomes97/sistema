@@ -1,50 +1,36 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import type { InferType } from 'yup';
 
 import Button from '../../components/buttons';
 import FormComponent from '../../components/form/authForm';
 import InputComponent from '../../components/input';
+import { useCreate } from '../../hook/use-create';
 import { createUser } from '../../service/http/user/request';
 import { signupSchema } from '../../validations/signupSchema';
 import { Container, Wrapper } from './style';
 
-type FormData = {
-  fullname: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+type UserType = InferType<typeof signupSchema>;
 
 const SignupPage = () => {
-  const navigate = useNavigate();
+  const { onSubmit: createUserHandler } = useCreate<UserType>(createUser, { redirectTo: '/' });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormData>({
+  } = useForm<UserType>({
     resolver: yupResolver(signupSchema),
   });
 
-  const onHandleSubmit = async (formData: FormData) => {
+  const onHandleSubmit = async (formData: UserType) => {
     if (formData.password !== formData.confirmPassword) {
       toast.error('As senhas não coincidem.');
       return;
     }
 
-    try {
-      await createUser({
-        email: formData.email,
-        fullname: formData.fullname,
-        password: formData.password,
-        confirmPassword: formData.confirmPassword,
-      });
-      toast.success('Cadastro realizado com sucesso!');
-      navigate('/');
-    } catch (error: any) {
-      toast.error(`${error.message}`);
-    }
+    createUserHandler(formData);
   };
 
   return (

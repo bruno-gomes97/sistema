@@ -1,14 +1,14 @@
 import { supabase } from '../../supabaseClient';
 
-export type UserType = {
-  id: string;
-  created_at: string;
+export interface UserType {
+  id?: string;
+  created_at?: string;
   email: string;
-  fullname: string;
+  fullname?: string;
   updated_at?: string;
   password: string;
   confirmPassword: string;
-};
+}
 
 export const createUser = async (user: Omit<UserType, 'id' | 'created_at'>) => {
   // Cria o usuário no Auth

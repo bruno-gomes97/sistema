@@ -4,7 +4,7 @@ import { Content, Description, Header, Value } from './style';
 export interface MetricCardProps {
   title?: string;
   icon?: React.ReactNode;
-  value?: string | number;
+  value?: string | number | Promise<number>;
   description?: string;
 }
 
