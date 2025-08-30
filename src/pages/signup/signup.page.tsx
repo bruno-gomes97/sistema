@@ -1,11 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/buttons';
 import FormComponent from '../../components/form/authForm';
 import InputComponent from '../../components/input';
-import { supabase } from '../../service/supabaseClient';
+import { createUser } from '../../service/http/user/request';
 import { signupSchema } from '../../validations/signupSchema';
 import { Container, Wrapper } from './style';
 
@@ -17,6 +18,7 @@ type FormData = {
 };
 
 const SignupPage = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -31,20 +33,17 @@ const SignupPage = () => {
       return;
     }
 
-    const { error } = await supabase.auth.signUp({
-      email: formData.email,
-      password: formData.password,
-      options: {
-        data: {
-          full_name: formData.fullname,
-        },
-      },
-    });
-
-    if (error) {
-      toast.error(error.message);
-    } else {
+    try {
+      await createUser({
+        email: formData.email,
+        fullname: formData.fullname,
+        password: formData.password,
+        confirmPassword: formData.confirmPassword,
+      });
       toast.success('Cadastro realizado com sucesso!');
+      navigate('/');
+    } catch (error: any) {
+      toast.error(`${error.message}`);
     }
   };
 

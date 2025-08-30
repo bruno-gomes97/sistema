@@ -5,13 +5,14 @@ interface TextareaProps {
   id?: string;
   placeholder?: string;
   label?: string;
+  register?: any;
 }
 
-const TextareaComponent = ({ className, id, placeholder, label }: TextareaProps) => {
+const TextareaComponent = ({ className, id, placeholder, label, register }: TextareaProps) => {
   return (
     <Wrapper>
       <Label htmlFor={id}>{label}</Label>
-      <Textarea className={className} id={id} placeholder={placeholder} />
+      <Textarea className={className} id={id} placeholder={placeholder} {...register} />
     </Wrapper>
   );
 };
