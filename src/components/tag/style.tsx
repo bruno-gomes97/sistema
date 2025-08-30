@@ -2,36 +2,26 @@ import styled from 'styled-components';
 
 type TagProps = {
   hasBorder: boolean;
-  type: 'info' | 'negative' | 'success' | 'warning';
+  type: 'negative' | 'success';
 };
 
 const COLORS = {
-  info: {
-    text: 'blue',
-    background: 'lightblue',
-    border: 'blue',
-  },
   negative: {
-    text: 'red',
-    background: 'lightcoral',
-    border: 'red',
+    text: 'var(--white-color)',
+    background: 'var(--black-color)',
+    border: 'var(--black-color)',
   },
   success: {
     text: 'var(--color-feedback-positive)',
     background: 'var(--color-feedback-positive-bg)',
     border: 'var(--color-feedback-positive)',
   },
-  warning: {
-    text: 'orange',
-    background: 'lightyellow',
-    border: 'orange',
-  },
 } as const;
 
-export const Container = styled.div<TagProps>`
+export const Container = styled.div<{ $hasBorder: boolean; type: TagProps['type'] }>`
   color: ${({ type }) => COLORS[type].text};
   padding: 0 10px;
   border-radius: 24px;
   background: ${({ type }) => COLORS[type].background};
-  border: ${({ type, hasBorder }) => (hasBorder ? `1px solid ${COLORS[type].border}` : 'none')};
+  border: ${({ $hasBorder, type }) => ($hasBorder ? `1px solid ${COLORS[type].border}` : 'none')};
 `;

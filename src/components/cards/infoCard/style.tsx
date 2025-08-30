@@ -11,6 +11,14 @@ export const Container = styled.div`
   gap: 1rem;
   margin: 1rem 0;
 
+  /* Suavização da animação */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-1px); /* levanta o card */
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.15); /* sombra mais forte */
+  }
+
   header {
     width: 100%;
     display: flex;

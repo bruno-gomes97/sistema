@@ -70,3 +70,27 @@ export const getLowStockProducts = async () => {
 
   return products || [];
 };
+
+export const getProductStatistics = async () => {
+  const response = await supabase.from('products').select('*', { count: 'exact' });
+
+  return {
+    totalProducts: response.count || 0,
+    activeProducts: response?.data?.filter((product: ProductType) => product.is_active).length || 0,
+    totalInStock: response?.data?.reduce((acc: number, product: ProductType) => acc + product.stock_quantity, 0) || 0,
+    category: response?.data?.reduce((acc: Record<string, number>, product: ProductType) => {
+      acc[product.category] = (acc[product.category] || 0) + 1;
+      return acc;
+    }, {}),
+  };
+};
+
+export const getAllProducts = async () => {
+  const { data: products, error } = await supabase.from('products').select('*');
+
+  if (error) {
+    throw new Error(error.message);
+  }
+
+  return products || [];
+};
