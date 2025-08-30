@@ -7,6 +7,8 @@
   --white-color: rgba(255, 255, 255, 1);
   --black-color: rgba(9, 9, 13, 1);
   --border: rgba(255, 204, 210, 1);
+  --color-feedback-positive-bg: rgb(240 253 244);
+  --color-feedback-positive: rgb(0 162 73);
 }
 
 * {

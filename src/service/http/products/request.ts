@@ -64,3 +64,9 @@ export const getQuantityProducts = async () => {
   const { data: products } = await supabase.from('products').select('id');
   return products?.length || 0;
 };
+
+export const getLowStockProducts = async () => {
+  const { data: products } = await supabase.from('products').select('id, stock_quantity').lt('stock_quantity', 5); // Exemplo: produtos com menos de 5 em estoque
+
+  return products || [];
+};

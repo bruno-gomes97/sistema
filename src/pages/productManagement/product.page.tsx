@@ -2,6 +2,7 @@ import { Box, Plus } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 import Button from '../../components/buttons';
+import InforCard from '../../components/cards/infoCard';
 import EmptyState from '../../components/emptyState';
 import FilterBox from '../../components/filterBox';
 import HeaderComponent from '../../components/header';
@@ -48,7 +49,10 @@ const ProductPage = () => {
             placeholder="Selecione as categorias"
           />
         </FilterBox>
-        {fruitOptions.length > 0 && (
+
+        {fruitOptions.length > 0 ? (
+          <InforCard />
+        ) : (
           <EmptyState
             message="Nenhum produto cadastrado"
             description="Comece adicionando seu primeiro produto ao catálogo."
